@@ -24,12 +24,12 @@
 }
 #custom-editor .editor {
   width: 100%;
-  height: calc(50%- (35px+43px+32px) / 2);
+  height: calc(50% - (35px + 43px + 32px) / 2);
 }
 #custom-editor .custom-editor-border {
   clear: both;
   width: 100%;
-  height: calc(100%-32px);
+  height: calc(100% - 32px);
 }
 #custom-editor .buttonDiv {
   width: 100%;
