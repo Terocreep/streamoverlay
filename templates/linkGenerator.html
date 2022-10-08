@@ -1,0 +1,123 @@
+<form
+  autocomplete="off"
+  onsubmit="event.preventDefault()"
+  style="display: none"
+></form>
+<script>
+  function so_generateLinkForm() {
+    let oo = document.getElementById("so_onlyone").checked;
+    let ac = [];
+    let us = [];
+    let so_users = document.querySelectorAll(".so_user");
+    for (let i = 0; i < so_users.length; i++) {
+      const e = so_users[i];
+      if (e.checked) us.push(e.value);
+    }
+    let so_actors = document.querySelectorAll(".so_actor");
+    for (let i = 0; i < so_actors.length; i++) {
+      const e = so_actors[i];
+      if (e.checked) ac.push(e.value);
+    }
+    let sp_html = document.getElementById("so_link-generator").querySelector("#so_e-html").querySelector(".ace_content"). innerText
+    let sp_css = document.getElementById("so_link-generator").querySelector("#so_e-css").querySelector(".ace_content"). innerText
+    let so_link =window.location.protocol +"//" +window.location.hostname +":" +window.location.port +"/modules/streamoverlay/overlay.html";
+    let res = {};
+    if (oo) res.oo = oo;
+    if (ac.length > 0) res.ac = ac;
+    if (us.length > 0) res.us = us;
+    if (sp_html) res.cd = sp_html;
+    if (sp_css) res.cc = sp_css;
+    let s = JSON.stringify(res);
+    if (s != "{}") so_link += "?" + so_Base64.encode(encodeURI(s));
+    document.getElementById("so_output").innerHTML = so_link;
+  }
+  function so_copy() {
+    var copyText = document.getElementById("so_output");
+    navigator.clipboard.writeText(copyText.innerHTML);
+    ui.notifications.info(
+      document.getElementById("so_copy").innerHTML + " : " + copyText.innerHTML
+    );
+  }
+</script>
+<div id="so_link-generator">
+  <div>
+    <h1>{{localize "streamoverlay.windows.LinkGenerator.title"}}</h1>
+  </div>
+  <div>
+    <input class="so_onlyone so_field"type="checkbox"id="so_onlyone"value="so_onlyone"name="so_onlyone"/>
+    <label for="so_onlyone">{{localize "streamoverlay.windows.LinkGenerator.onlyOne"}}</label>
+  </div>
+  <div id="so_tables">
+    <div>
+      <h3 class="so_collapsible" data-target="so-actors">{{localize "streamoverlay.windows.LinkGenerator.actors"}}</h3>
+      <div>
+        <table id="so-actors">
+          <tbody id="so_coll_actors">
+            {{#each actors}}
+            <tr data-actor="{{this.name}}">
+              <td>
+                <input
+                  class="so_actor so_field"
+                  type="checkbox"
+                  id="{{this.id}}"
+                  value="{{this.name}}"
+                  name="{{this.id}}"
+                />
+                <label for="{{this.id}}">{{this.name}}</label>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3 class="so_collapsible" data-target="so-users">{{localize "streamoverlay.windows.LinkGenerator.users"}}</h3>
+      <div>
+        <table id="so-users">
+          <tbody id="so_coll_users">
+            {{#each users}}
+            <tr data-actor="{{this.name}}">
+              <td>
+                <input
+                  class="so_user so_field"
+                  type="checkbox"
+                  id="{{this.id}}"
+                  value="{{this.name}}"
+                  name="{{this.id}}"
+                />
+                <label for="{{this.id}}">{{this.name}}</label>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="so_editors">
+    <h2>Page editors{{localize "streamoverlay.windows.LinkGenerator.pageEditor"}}</h2>
+    <div>
+      <div id="so_e-css">
+        <h3>{{localize "streamoverlay.windows.LinkGenerator.app.css"}}</h3>
+        <div class="editor" id="cssEditor"></div>
+      </div>
+      <div id="so_e-html">
+        <h3>{{localize "streamoverlay.windows.LinkGenerator.app.html"}}</h3>
+        <p>{{localize "streamoverlay.windows.LinkGenerator.app.validVariables"}} : username, actorname, roll_result, roll_formula</p>
+        <div class="editor" id="htmlEditor"></div>
+      </div>
+    </div>
+  </div>
+  <div id="so_footer">
+    <button type="button" onclick="so_generateLinkForm() "class="generate-button">
+      {{localize "streamoverlay.windows.LinkGenerator.generate"}}
+    </button>
+    <div id="so_do">
+      <pre id="so_output">&nbsp</pre>
+      <button type="button" id="so_copy" onclick="so_copy()">
+        {{localize "streamoverlay.windows.LinkGenerator.copy"}}
+      </button>
+    </div>
+  </div>
+</div>

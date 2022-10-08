@@ -1,0 +1,62 @@
+{
+    "id": "streamoverlay",
+    "title": "Stream Overlay",
+    "description": "This module adds custom overlays to Foundry VTT for you to use on your stream",
+    "version": "This is auto replaced",
+    "library": "false",
+    "socket": true,
+    "manifestPlusVersion": "1.2.0",
+    "compatibility": {
+      "minimum": 10,
+      "verified": 10,
+      "maximum": 11
+    },
+    "authors": [
+      {
+        "name": "Terocreep",
+        "url": "http://terocreep.com/",
+        "email": "terocreep@gmail.com",
+        "discord": "Terocreep#1001"
+      }
+    ],
+    "relationships": {
+      "systems": [],
+      "requires": [{
+        "id": "acelib",
+        "type": "module",
+        "manifest": "https://github.com/arcanistzed/acelib/releases/latest/download/module.json"
+      }]
+    },
+    "styles": [
+        "styles/style.css"
+    ],
+    "scripts": [
+        "scripts/init.js",
+        "scripts/settings.js",
+        "scripts/b64.js"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
+        },
+        {
+            "lang": "fr",
+            "name": "French",
+            "path": "languages/fr.json"
+        }
+    ],
+    "url": "This is auto replaced",
+    "manifest": "This is auto replaced",
+    "download": "This is auto replaced",
+    "license": "LICENSE",
+    "readme": "README.md",
+    "media": [
+      {
+        "type": "icon",
+        "url": "https://cdn.discordapp.com/avatars/248129774923415554/3f3b91a4df1a85d67d6061c8b003db76.webp?size=512"
+      }
+    ]
+  }
+  

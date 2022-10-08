@@ -1,0 +1,48 @@
+{
+	"streamoverlay":{
+    "global":{
+      "saved": "Saved!",
+      "saveDialog": {
+        "title": "Save before closing?",
+        "content": "Do you want to save before closing?"
+      }
+    },
+    "settings":{
+      "customEditor": {
+        "name": "Custom Overlay Editor",
+        "label": "Open Editor",
+        "hint": "Opens an editor that allows you to customize the overlays related to this module."
+      },
+      "linkGenerator": {
+        "name": "Overlay Link Generator",
+        "label": "Open Generator",
+        "hint": "Opens a window to create a link to use as an overlay."
+      }
+    },
+    "windows": {
+      "CustomEditor": {
+        "title": "Custom Overlay Editor",
+        "app": {
+          "help": "Help",
+          "css": "Custom CSS",
+          "html": "Custom HTML",
+          "validVariables": "You can use the variables"
+        }
+      },
+      "LinkGenerator": {
+        "title": "Overlay Link Generator",
+        "generate":"Generate",
+        "copy":"Copy",
+        "users":"Users",
+        "actors":"Actors",
+        "onlyOne":"One roll at a time",
+        "pageEditor":"Page editor",
+        "app": {
+          "css": "Custom CSS",
+          "html": "Custom HTML",
+          "validVariables": "You can use the variables"
+        }
+      }
+    }
+  }
+}

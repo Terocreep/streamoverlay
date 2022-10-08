@@ -1,10 +1,14 @@
+![Latest Release Download Count](https://img.shields.io/github/downloads/Terocreep/streamoverlay/latest/module.zip)
+![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fstreamoverlay&colorB=4aa94a)
+
+
 # Stream Overlay
 
 This module adds custom overlays to Foundry VTT for you to use on your stream.
 
 ## Installation
 
-To install, import this [Manifest](https://raw.githubusercontent.com/Terocreep/streamoverlay/master/module.json) into your module browser.
+To install, import this [Manifest](https://github.com/Terocreep/streamoverlay/releases/latest/download/module.json) into your module browser.
 
 ## Usage
 

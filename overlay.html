@@ -1,0 +1,92 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style id="customCSS"></style>
+    <style id="staticCSS"></style>
+    <script defer="" src="/scripts/socket.io.min.js"></script>
+    <script defer="" src="./scripts/b64.js"></script>
+    <script>
+      var socket;
+      // username,actorname,roll_result,roll_formula
+      let handleing = false;let rolls = [];let timestamps = [];
+      let defaultHTML = `<div class="notif"><div class="notif-header">{username}</div><div class="notif-content">{roll_result}</div></div>`;
+      let customHTML = "";let onlyOne = false;let forceCustomDefault = false;let noCustomCSS = false;let actors = [];let users = [];
+      function setCSS(s) {document.getElementById("customCSS").innerHTML = s;}
+      function initQueryString() {
+        let qs = window.location.search.replace("?", "");
+        let obj = JSON.parse(decodeURI(so_Base64.decode(qs)));
+        if (obj.oo) onlyOne = true;
+        if (obj.ac) actors = obj.ac;
+        if (obj.us) users = obj.us;
+        if (obj.cd) {defaultHTML = obj.cd;forceCustomDefault = true;}
+        if (obj.cc) {document.getElementById("staticCSS").innerHTML = obj.cd}
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.location.href.indexOf("?") != -1) initQueryString();
+        socket = io();
+        socket.on("module.streamoverlay", (data) => {
+          console.log(data);
+          if (data.type == "roll") {
+            // if (data.)
+            if ((actors.length !== 0 &&!actors.includes(data.roll.actorname.toLowerCase())) && (users.length !== 0 &&!users.includes(data.roll.username.toLowerCase())))return;
+            if (timestamps.includes(data.timestamp)) return;
+            timestamps.push(data.timestamp);
+            rolls.push(data);
+            if (data.style) setCSS(data.style);
+            if (data.html) customHTML = data.html;
+            setTimeout(handleMessage, 0);
+          } else if (data.type == "message") {
+            //do nothing, for now
+          }
+        });
+      });
+
+      function handleMessage() {
+        if (handleing) return;
+        let roll;
+        if (rolls.length > 0) roll = rolls.shift();
+        if (!roll) return;
+        if (onlyOne) handleing = true;
+        addBox(
+          roll.roll.username,
+          roll.roll.actorname,
+          roll.roll.roll_result,
+          roll.roll.roll_formula
+        );
+        setTimeout(() => {
+          timestamps = timestamps.filter((v, i, a) => v != roll.timestamp);
+        }, 180000);
+      }
+
+      function addBox(us, ac, rr, rf) {
+        var overlay = document.getElementById("overlayContainer");
+        let nc = document.createElement("div");
+        if (forceCustomDefault) nc.innerHTML = defaultHTML;
+        else if (customHTML) nc.innerHTML = customHTML;
+        else nc.innerHTML = defaultHTML;
+        nc.innerHTML = nc.innerHTML
+          .replaceAll("{username}", us)
+          .replaceAll("{actorname}", ac)
+          .replaceAll("{roll_result}", rr)
+          .replaceAll("{roll_formula}", rf);
+        overlay.append(nc);
+        setTimeout(() => {
+          nc.remove();
+          setTimeout(() => {
+            if (onlyOne) {
+              if (overlay.childElementCount == 0) {
+                handleing = false;
+                setTimeout(handleMessage, 0);
+              }
+            }
+          }, 1500);
+        }, 5000);
+      }
+    </script>
+  </head>
+  <body style="margin:0">
+    <div id="overlayContainer"></div>
+  </body>
+</html>

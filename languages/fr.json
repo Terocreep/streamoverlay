@@ -1,0 +1,48 @@
+{
+	"streamoverlay":{
+    "global":{
+      "saved": "Sauvegardé!",
+      "saveDialog": {
+        "title": "Sauvegarder avant de fermer?",
+        "content": "Voulez vous sauvegarder avant de fermer?"
+      }
+    },
+    "settings":{
+      "customEditor": {
+        "name": "Editeur d'overlay personalisés",
+        "label": "Ouvrir l'éditeur",
+        "hint": "Ouvre un éditeur permettant de personaliser les overlays liés à ce module."
+      },
+      "linkGenerator": {
+        "name": "Générateur de lien d'overlay",
+        "label": "Ouvrir le générateur",
+        "hint": "Ouvre une fenêtre pour créer un lien a utiliser comme source pour l'overlay."
+      }
+    },
+    "windows": {
+      "CustomEditor": {
+        "title": "Editeur d'overlay personalisés",
+        "app": {
+          "help": "Aide",
+          "css": "CSS personalisé",
+          "html": "HTML personalisé",
+          "validVariables": "Vous pouvez utilisé les variables"
+        }
+      },
+      "LinkGenerator": {
+        "title": "Générateur de lien d'overlay",
+        "generate":"Générer",
+        "copy":"Copier",
+        "users":"Utilisateurs",
+        "actors":"Personnages",
+        "onlyOne":"Un seul jet a la fois",
+        "pageEditor":"Editeur de page",
+        "app": {
+          "css": "CSS personalisé",
+          "html": "HTML personalisé",
+          "validVariables": "Vous pouvez utilisé les variables"
+        }
+      }
+    }
+  }
+}
