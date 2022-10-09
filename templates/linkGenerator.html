@@ -6,6 +6,11 @@
 <script>
   function so_generateLinkForm() {
     let oo = document.getElementById("so_onlyone").checked;
+    let dt = document.getElementById("so_displaytime").value;
+    if (dt-0 > 60) {
+      dt = "60";
+      document.getElementById("so_displaytime").value = "60"
+    }
     let ac = [];
     let us = [];
     let so_users = document.querySelectorAll(".so_user");
@@ -21,8 +26,10 @@
     let sp_html = document.getElementById("so_link-generator").querySelector("#so_e-html").querySelector(".ace_content"). innerText
     let sp_css = document.getElementById("so_link-generator").querySelector("#so_e-css").querySelector(".ace_content"). innerText
     let so_link =window.location.protocol +"//" +window.location.hostname +":" +window.location.port +"/modules/streamoverlay/overlay.html";
+    
     let res = {};
     if (oo) res.oo = oo;
+    if (dt && dt != 5) res.dt = dt;
     if (ac.length > 0) res.ac = ac;
     if (us.length > 0) res.us = us;
     if (sp_html) res.cd = sp_html;
@@ -43,9 +50,15 @@
   <div>
     <h1>{{localize "streamoverlay.windows.LinkGenerator.title"}}</h1>
   </div>
-  <div>
-    <input class="so_onlyone so_field"type="checkbox"id="so_onlyone"value="so_onlyone"name="so_onlyone"/>
-    <label for="so_onlyone">{{localize "streamoverlay.windows.LinkGenerator.onlyOne"}}</label>
+  <div id="so_params">
+    <div>
+      <input class="so_onlyone so_field" type="checkbox" id="so_onlyone" name="so_onlyone"/>
+      <label for="so_onlyone">{{localize "streamoverlay.windows.LinkGenerator.onlyOne"}}</label>
+    </div>
+    <div>
+      <input class="so_displaytime so_field" type="number" id="so_displaytime" name="so_displaytime" value="5" min=1 max=60/>
+      <label for="so_displaytime">{{localize "streamoverlay.windows.LinkGenerator.displayTime"}}</label>
+    </div>
   </div>
   <div id="so_tables">
     <div>

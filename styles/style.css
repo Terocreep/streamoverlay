@@ -41,6 +41,7 @@
 #custom-editor .custom-editor-borderh2:last-of-type {
   margin-top: 8px;
 }
+
 #so_output {
   padding: 20px;
   margin: 0;
@@ -62,6 +63,21 @@
 #so_link-generator {
   display: flex;
   flex-direction: column;
+}
+#so_params {
+    display: flex;
+    width: 100%;
+}
+#so_params input[type="number"] {
+    width: 50px;
+}
+#so_params label {
+    word-break: keep-all;
+}
+#so_params > div {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
 }
 #so_tables {
   display: flex;

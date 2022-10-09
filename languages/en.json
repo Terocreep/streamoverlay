@@ -36,6 +36,7 @@
         "users":"Users",
         "actors":"Actors",
         "onlyOne":"One roll at a time",
+        "displayTime":"Roll display time",
         "pageEditor":"Page editor",
         "app": {
           "css": "Custom CSS",

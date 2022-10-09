@@ -11,12 +11,16 @@
       // username,actorname,roll_result,roll_formula
       let handleing = false;let rolls = [];let timestamps = [];
       let defaultHTML = `<div class="notif"><div class="notif-header">{username}</div><div class="notif-content">{roll_result}</div></div>`;
-      let customHTML = "";let onlyOne = false;let forceCustomDefault = false;let noCustomCSS = false;let actors = [];let users = [];
+      let customHTML = "";let onlyOne = false;let forceCustomDefault = false;let noCustomCSS = false;let actors = [];let users = [];let dt = 5;
       function setCSS(s) {document.getElementById("customCSS").innerHTML = s;}
       function initQueryString() {
         let qs = window.location.search.replace("?", "");
         let obj = JSON.parse(decodeURI(so_Base64.decode(qs)));
         if (obj.oo) onlyOne = true;
+        if (obj.dt) {
+          displayTime = obj.dt-0;
+          if (isNaN(displayTime)) displayTime = 5
+        }
         if (obj.ac) actors = obj.ac;
         if (obj.us) users = obj.us;
         if (obj.cd) {defaultHTML = obj.cd;forceCustomDefault = true;}
@@ -81,8 +85,8 @@
                 setTimeout(handleMessage, 0);
               }
             }
-          }, 1500);
-        }, 5000);
+          }, 1000);
+        }, (displayTime-0)*1000);
       }
     </script>
   </head>

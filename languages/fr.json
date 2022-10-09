@@ -36,6 +36,7 @@
         "users":"Utilisateurs",
         "actors":"Personnages",
         "onlyOne":"Un seul jet a la fois",
+        "displayTime":"Temps d'affichage",
         "pageEditor":"Editeur de page",
         "app": {
           "css": "CSS personalisé",

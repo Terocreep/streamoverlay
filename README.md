@@ -32,7 +32,8 @@ There are multiple settings :
 
 | Name | Description |
 |------|-------------|
-| OnlyOne | Only one roll will be displayed at a time, the overlay will wait the disappearing of a roll to display the next one. |
+| One roll at a time | Only one roll will be displayed at a time, the overlay will wait the disappearing of a roll to display the next one. |
+| Roll display time | Define the roll appearance duration  |
 | Users | Select the Users that you want the rolls to be displayed. If none are selected, any user will  be displayed |
 | Actors | Select the Actors that you want the rolls to be displayed. If none are selected, any actor will  be displayed |
 | Custom CSS | Apply a style for only one page. If not set, global style will be used. If set, both the global one and the cusom one will be used |
