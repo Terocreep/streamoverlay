@@ -11,7 +11,7 @@
       // username,actorname,roll_result,roll_formula
       let handleing = false;let rolls = [];let timestamps = [];
       let defaultHTML = `<div class="notif"><div class="notif-header">{username}</div><div class="notif-content">{roll_result}</div></div>`;
-      let customHTML = "";let onlyOne = false;let forceCustomDefault = false;let noCustomCSS = false;let actors = [];let users = [];let dt = 5;
+      let customHTML = "";let onlyOne = false;let forceCustomDefault = false;let noCustomCSS = false;let actors = [];let users = [];let displayTime = 5;
       function setCSS(s) {document.getElementById("customCSS").innerHTML = s;}
       function initQueryString() {
         let qs = window.location.search.replace("?", "");
